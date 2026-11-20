@@ -1,0 +1,17 @@
+[workspace]
+members = [
+  "crates/proto",
+  "crates/edge",
+  "crates/store",
+  "crates/models",
+  "crates/svc-sts",
+  "crates/svc-iam",
+  "crates/svc-lambda",
+  "crates/svc-sqs",
+  "crates/svc-s3",
+  "crates/svc-dynamodb",
+  "crates/spine",
+  "crates/sandbox",
+  "xtask",
+]
+resolver = "2"

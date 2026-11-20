@@ -1,0 +1,13 @@
+[package]
+name = "localite-sandbox"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "localite-sandbox"
+path = "src/main.rs"
+
+[dependencies]
+nix = { version = "0.29", features = ["sched", "mount", "fs", "process", "socket", "net", "user"] }
+libc = "0.2"
+spine = { path = "../spine" }

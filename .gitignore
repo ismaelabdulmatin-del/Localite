@@ -1,0 +1,16 @@
+/target/
+app/build/
+app/.cache/
+guest/.cache/
+guest/initrd.gz
+.venv/
+.test-venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+PLAN.md
+LEDGER.md
+PARKED.md
+STATUS.md
+tasks.tsv
+scripts/record.sh

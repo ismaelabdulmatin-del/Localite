@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Local AWS-compatible API testing on Apple Silicon, in an isolated Linux VM without Docker.">
+  <title>Localite — local AWS testing</title>
+  <style>
+    :root { color-scheme: light dark; font: 16px/1.6 system-ui, sans-serif; }
+    body { margin: 0; background: #101827; color: #eef4ff; }
+    main { max-width: 760px; margin: auto; padding: 64px 24px 80px; }
+    h1 { margin: 0; font-size: clamp(2.6rem, 8vw, 4.5rem); letter-spacing: -.05em; }
+    h2 { margin-top: 2.5rem; }
+    p, li { color: #c4cfdf; }
+    .lede { max-width: 620px; font-size: 1.2rem; }
+    .download { display: inline-block; margin: 20px 0 8px; padding: 12px 20px; border-radius: 9px; background: #77a9ff; color: #07101f; font-weight: 700; text-decoration: none; }
+    .subtle { color: #a6b3c5; font-size: .93rem; }
+    .warning { padding: 16px 18px; border: 1px solid #d5a74a; border-radius: 9px; background: #352b18; }
+    code { color: #dce8ff; background: #202c3d; padding: 2px 5px; border-radius: 4px; }
+    a { color: #9dc0ff; }
+    footer { margin-top: 48px; border-top: 1px solid #344155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Localite</h1>
+  <p class="lede">A local AWS-compatible endpoint for development and integration tests on Apple Silicon Macs. Runs in an isolated Linux VM—no Docker daemon required.</p>
+  <a class="download" href="https://github.com/ismaelabdulmatin-del/Localite/releases/latest/download/Localite.dmg">Download Localite for macOS</a>
+  <p class="subtle">Apple Silicon · macOS 12 or later · 104 MB · Version 0.1.0</p>
+
+  <p class="warning"><strong>Interim distribution:</strong> this DMG is ad-hoc signed and not notarized. macOS may block the app or require manual approval in Privacy &amp; Security. Only install it if you trust the source; verify the SHA-256 checksum on the release page. A Developer ID-signed and notarized release is not yet available.</p>
+
+  <h2>Use your AWS tools</h2>
+  <p>Start Localite, wait for the app to show <strong>Running · Moto AWS API</strong>, then point your SDK or CLI at <code>http://localhost:4566</code>. In the app, click <strong>Copy AWS env</strong> and paste the fake local credentials into the terminal where you run your code. The built-in <strong>Getting started</strong> guide includes Python and AWS CLI examples.</p>
+
+  <h2>Verified service workflows</h2>
+  <ul>
+    <li><strong>S3:</strong> bucket and object create/delete; put, get, and list objects.</li>
+    <li><strong>SQS:</strong> queue create/delete; send, receive, and delete messages.</li>
+    <li><strong>DynamoDB:</strong> table create/delete; item put/get/update/query/scan.</li>
+    <li><strong>IAM:</strong> user create/get/list/delete.</li>
+    <li><strong>STS:</strong> caller identity.</li>
+  </ul>
+  <p>These workflows were exercised with boto3 against the bundled Moto server. This is a tested subset, not full AWS or LocalStack parity. The image tag is pinned as <code>motoserver/moto:5.2.5</code>; its installed Moto package metadata reports <code>5.2.5.dev0</code>.</p>
+
+  <h2>Know the limits</h2>
+  <ul>
+    <li>Emulator state resets when Localite stops; it is not durable storage.</li>
+    <li>Lambda code execution is not provided. Localite does not run your project code.</li>
+    <li>Your editor and app run on macOS and connect to the local endpoint. The selected workspace is isolated file storage, not a development container.</li>
+    <li>Use fake local credentials only. Do not send production workloads or credentials to this endpoint.</li>
+  </ul>
+
+  <h2>Project and documentation</h2>
+  <p><a href="https://github.com/ismaelabdulmatin-del/Localite">Source repository</a> · <a href="https://github.com/ismaelabdulmatin-del/Localite/releases/latest">Release notes and checksum</a> · <a href="https://github.com/ismaelabdulmatin-del/Localite/blob/main/README-LOCALITE.md">Detailed setup and compatibility guide</a></p>
+
+  <footer class="subtle">Localite is an independent project and is not affiliated with or endorsed by Amazon Web Services or the LocalStack project.</footer>
+</main>
+</body>
+</html>

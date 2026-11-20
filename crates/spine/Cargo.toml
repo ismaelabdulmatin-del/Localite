@@ -1,0 +1,23 @@
+[package]
+name = "spine"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "spine"
+path = "src/lib.rs"
+
+[[bin]]
+name = "spine"
+path = "src/main.rs"
+
+[dependencies]
+proto = { path = "../proto" }
+edge = { path = "../edge" }
+store = { path = "../store" }
+svc-sts = { path = "../svc-sts" }
+svc-iam = { path = "../svc-iam" }
+svc-lambda = { path = "../svc-lambda" }
+svc-sqs = { path = "../svc-sqs" }
+svc-dynamodb = { path = "../svc-dynamodb" }
+svc-s3 = { path = "../svc-s3" }
